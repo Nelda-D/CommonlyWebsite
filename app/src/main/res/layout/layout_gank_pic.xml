@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<lib.homhomlib.design.SlidingLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/container_gank"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:background="#ffffff"
+    app:sliding_mode="top"
+    app:background_view="@layout/layout_bg_gank_pic">
+    <!--<FrameLayout
+        android:id="@+id/container_gank"
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:background="#ffffff">
+        <TextView
+            android:id="@+id/textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/primary_material_dark"
+            />
+    </FrameLayout>-->
+
+
+
+</lib.homhomlib.design.SlidingLayout>

@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Commonly Website</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_webview">Website</string>
+</resources>

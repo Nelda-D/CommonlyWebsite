@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="48dp"
+    android:background="@color/blue_500"
+    >
+    <Button
+        android:id="@+id/button_pao"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:gravity="center"
+        android:background="#00000000"
+        android:text="Craeer"
+        />
+    <Button
+        android:id="@+id/button_apkbus"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:gravity="center"
+        android:background="#00000000"
+        android:text="APK BUS"
+        />
+    <Button
+        android:id="@+id/button_codekk"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:gravity="center"
+        android:background="#00000000"
+        android:text="CODEKKr"
+        />
+    <Button
+        android:id="@+id/button_v2ek"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:gravity="center"
+        android:background="#00000000"
+        android:text="V2EK"
+        />
+
+</LinearLayout>

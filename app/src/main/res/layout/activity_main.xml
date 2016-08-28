@@ -1,0 +1,24 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+    <ProgressBar
+        android:id="@+id/main_progressbar"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+
+        />
+
+    <FrameLayout
+        android:id="@+id/main_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </FrameLayout>
+
+    <include layout="@layout/layout_bottombar"
+        android:layout_height="48dp"
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        />
+
+</RelativeLayout>
