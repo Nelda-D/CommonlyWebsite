@@ -1,25 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<lib.homhomlib.design.SlidingLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/container_gank"
-    android:layout_height="match_parent"
-    android:layout_width="match_parent"
-    android:background="#ffffff"
-    app:sliding_mode="top"
-    app:background_view="@layout/layout_bg_gank_pic">
-    <!--<FrameLayout
-        android:id="@+id/container_gank"
-        android:layout_height="match_parent"
-        android:layout_width="match_parent"
-        android:background="#ffffff">
-        <TextView
-            android:id="@+id/textview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/primary_material_dark"
-            />
-    </FrameLayout>-->
+<!--<lib.homhomlib.design.SlidingLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--android:id="@+id/container_gank"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:background="#ff222222"-->
+    <!--app:sliding_mode="top"-->
+    <!--app:background_view="@layout/layout_bg_gank_pic">-->
+    <!--<ScrollView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:fillViewport="true"-->
+        <!--android:layout_height="match_parent">-->
+
+        <LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:background="#ff222222"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="250dp">
+                <ImageView
+                    android:id="@+id/gank_banner_cover"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"/>
+                <View
+                    android:id="@+id/line1"
+                    android:layout_width="match_parent"
+                    android:layout_alignParentBottom="true"
+                    android:layout_height="2px"
+                    android:background="#d0000000"
+                    />
+                <View
+                    android:id="@+id/line2"
+                    android:layout_width="match_parent"
+                    android:layout_above="@+id/line1"
+                    android:layout_height="2px"
+                    android:background="#8c000000"
+                    />
+                <View
+                    android:id="@+id/line3"
+                    android:layout_width="match_parent"
+                    android:layout_above="@+id/line2"
+                    android:layout_height="2px"
+                    android:background="#28000000"
+                    />
+                <!--<View-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:background="#50000000"/>-->
+                <!--<FrameLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="80dp"-->
+                <!--android:background="@drawable/shape"-->
+                <!--android:layout_alignParentBottom="true">-->
+                <!--<TextView-->
+                <!--android:id="@+id/gank_banner_title"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="bottom"-->
+                <!--android:textSize="20dp"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:layout_marginLeft="20dp"-->
+                <!--android:layout_marginRight="20dp"-->
+                <!--android:layout_marginBottom="40dp"-->
+                <!--android:textColor="#FFFFFFFF"-->
+                <!--android:text="Everything will be ok."-->
+                <!--/>-->
+                <!--</FrameLayout>-->
+            </RelativeLayout>
+            <TextView
+                android:id="@+id/gank_head_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                android:textColor="@color/green_primary"
+                android:text="kkkkkkkkkkkkkkkkkkk"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="#ff8ab0c0"
+                />
+
+            <ListView
+                android:id="@+id/gank_listview"
+                android:layout_width="match_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:divider="@null"
+                android:layout_height="match_parent"/>
+        </LinearLayout>
+
+    <!--</ScrollView>-->
 
 
 
-</lib.homhomlib.design.SlidingLayout>
+
+
+
+<!--</lib.homhomlib.design.SlidingLayout>-->

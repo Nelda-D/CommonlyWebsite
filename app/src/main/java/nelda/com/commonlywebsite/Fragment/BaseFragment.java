@@ -11,8 +11,10 @@ import android.view.ViewGroup;
 import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ProgressBar;
 
-import com.gc.materialdesign.views.ProgressBarCircularIndeterminate;
+//import com.gc.materialdesign.views.ProgressBarCircularIndeterminate;
+
 
 import nelda.com.commonlywebsite.R;
 
@@ -21,8 +23,9 @@ import nelda.com.commonlywebsite.R;
  */
 public class BaseFragment extends Fragment {
     public WebView mWebView;
-    private ProgressBarCircularIndeterminate mProgress;
-    private String mWebViewPat;  //ÍøÖ·Â·¾¶
+//    private ProgressBarCircularIndeterminate mProgress;
+private ProgressBar mProgress;
+    private String mWebViewPat;  //ï¿½ï¿½Ö·Â·ï¿½ï¿½
     private String mUrlHead ="http://";
 
     public BaseFragment(){}
@@ -40,7 +43,9 @@ public class BaseFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.layout_web,container,false);
         initWebView(view);
-        mProgress = (ProgressBarCircularIndeterminate)view.findViewById(R.id.progressBarCircularIndetermininate);
+//        mProgress = (ProgressBarCircularIndeterminate)view.findViewById(R.id.progressBarCircularIndetermininate);
+        mProgress = (ProgressBar)view.findViewById(R.id.progressBarCircularIndetermininate);
+
         return view;
     }
 

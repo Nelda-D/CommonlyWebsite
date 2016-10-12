@@ -31,7 +31,7 @@ public class DrawActivity extends BaseActivity {
         rootView  = new LinearLayout(this);
         ViewGroup.LayoutParams params = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         rootView.setLayoutParams(params);
-        rootView.setBackgroundColor(getResources().getColor(android.R.color.holo_blue_dark));
+//        rootView.setBackgroundColor(getResources().getColor(android.R.color.holo_blue_dark));
         setContentView(rootView);
         initPaint();
         ImageView imageView = initImageView();

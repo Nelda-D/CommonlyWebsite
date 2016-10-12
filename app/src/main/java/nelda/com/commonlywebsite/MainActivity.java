@@ -41,15 +41,25 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         mFragmentTransaction = mFragmentManager.beginTransaction();
         initDatas();
         initClick();
-        initFragment();
+        String extraUrl = getBundle();
+        System.out.println("##########"+extraUrl);
+        initFragment(extraUrl);
     }
 
+    private String getBundle(){
+        Bundle bundle = this.getIntent().getExtras();
+        if(bundle == null) return "";
+        String url = bundle.getString("url");
+        return url;
+    }
 
-
-    private void initFragment(){
+    private void initFragment(String url){
+        if(url.isEmpty()){
+            url = mList_website.get(mCurrentFragmentNum).getWebUrl();
+        }
         mCurrentFragmentNum = 0;
 //        BaseFragment fragment = new BaseFragment(mList_webUrl.get(mCurrentFragmentNum));
-        mCurrentFragment = new BaseFragment(mList_website.get(mCurrentFragmentNum).getWebUrl());
+        mCurrentFragment = new BaseFragment(url);
 //        mList_fragment.add(fragment);
         mFragmentTransaction.replace(R.id.main_content,mCurrentFragment);
         mFragmentTransaction.commit();

@@ -1,13 +1,17 @@
 package nelda.com.commonlywebsite;
 
+import android.app.Activity;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.Window;
+import android.view.WindowManager;
 
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
@@ -22,13 +26,13 @@ import nelda.com.commonlywebsite.Fragment.BaseFragment;
 /**
  * Created by Administrator on 2016/6/26 0026.
  */
-public class BaseActivity extends ActionBarActivity {
+public class BaseActivity extends Activity {
 
     private DisplayImageOptions options;
 
     protected BaseFragment mCurrentFragment;
 
-    @Override
+
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -85,19 +89,20 @@ public class BaseActivity extends ActionBarActivity {
 
         options = new DisplayImageOptions.Builder()
                 .showStubImage(0)
-                .showImageForEmptyUri(0)//ÉèÖÃÍ¼Æ¬Îª¿Õ»òÊÇ´íÎóÊ±ÏÔÊ¾µÄÍ¼Æ¬
-                .showImageOnFail(0)//ÉèÖÃÍ¼Æ¬¼ÓÔØ»ò½âÂëµÄ¹ı³ÌÖĞ·¢Éú´íÎóÏÔÊ¾µÄÍ¼Æ¬
+                .showImageForEmptyUri(0)//ï¿½ï¿½ï¿½ï¿½Í¼Æ¬Îªï¿½Õ»ï¿½ï¿½Ç´ï¿½ï¿½ï¿½Ê±ï¿½ï¿½Ê¾ï¿½ï¿½Í¼Æ¬
+                .showImageOnFail(0)//ï¿½ï¿½ï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½Ø»ï¿½ï¿½ï¿½ï¿½Ä¹ï¿½ï¿½ï¿½ï¿½Ğ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Í¼Æ¬
                 .cacheInMemory().cacheOnDisc()
-                .cacheInMemory(false) // default ÉèÖÃÏÂÔØIDEÍ¼Æ¬ÊÇ·ñ»º´æÔÚÄÚ´æÖĞ
-                .cacheOnDisk(false) //dafault ÉèÖÃÏÂÔØµÄÍ¼Æ¬ÊÇ·ñ»º´æÔÚSD¿¨ÖĞ
-                .imageScaleType(ImageScaleType.IN_SAMPLE_INT) //default ÉèÖÃÍ¼Æ¬ÒÔÈçºÎµÄ±àÂë·½Ê½ÏÔÊ¾
-                .bitmapConfig(Bitmap.Config.ARGB_8888)//default ÉèÖÃÍ¼Æ¬µÄ½âÂëÀàĞÍ
+                .cacheInMemory(false) // default ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½IDEÍ¼Æ¬ï¿½Ç·ñ»º´ï¿½ï¿½ï¿½ï¿½Ú´ï¿½ï¿½ï¿½
+                .cacheOnDisk(false) //dafault ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Øµï¿½Í¼Æ¬ï¿½Ç·ñ»º´ï¿½ï¿½ï¿½SDï¿½ï¿½ï¿½ï¿½
+                .imageScaleType(ImageScaleType.IN_SAMPLE_INT) //default ï¿½ï¿½ï¿½ï¿½Í¼Æ¬ï¿½ï¿½ï¿½ï¿½ÎµÄ±ï¿½ï¿½ë·½Ê½ï¿½ï¿½Ê¾
+                .bitmapConfig(Bitmap.Config.ARGB_8888)//default ï¿½ï¿½ï¿½ï¿½Í¼Æ¬ï¿½Ä½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 .build();
     }
 
     protected DisplayImageOptions getImageLoaderOptions(){
         return options;
     }
+
 
 
 }

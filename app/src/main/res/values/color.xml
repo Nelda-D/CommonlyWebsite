@@ -3,4 +3,6 @@
     <color name="blue_500">#3f51b5</color>
     <color name="blue_700">#303f9f</color>
     <color name="white">#ffffff</color>
+
+    <color name="green_primary">#ff0e9b9b</color>
 </resources>
