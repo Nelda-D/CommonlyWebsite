@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class GankDayModel {
+public class GankDayBean {
 
     /**
      * category : ["iOS","Android","拓展资源","��չ��Դ","福利","��Ϣ��Ƶ"]

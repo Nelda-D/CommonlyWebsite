@@ -4,6 +4,8 @@
     <color name="blue_700">#303f9f</color>
     <color name="white">#ffffff</color>
 
-    <color name="green_primary">#ff0e9b9b</color>
-    <color name="green_primary_dark">#ff0e8b8b</color>
+    <color name="backbround_primary">#222222</color>
+
+    <color name="green_primary">#ff00bcd4</color>
+    <color name="green_primary_dark">#ff00bcd4</color>
 </resources>

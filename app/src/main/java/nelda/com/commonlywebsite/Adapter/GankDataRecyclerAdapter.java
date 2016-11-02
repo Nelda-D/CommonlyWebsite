@@ -11,7 +11,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import nelda.com.commonlywebsite.Bean.GankDayModel;
+import nelda.com.commonlywebsite.Bean.GankDayBean;
 import nelda.com.commonlywebsite.R;
 
 /**
@@ -19,7 +19,7 @@ import nelda.com.commonlywebsite.R;
  */
 public class GankDataRecyclerAdapter extends RecyclerView.Adapter<GankDataRecyclerAdapter.MyViewHolder> {
     Context mContext;
-    GankDayModel.ResultsBean mResultsBean;
+    GankDayBean.ResultsBean mResultsBean;
     List<LinkBean> list_LinkBeans = new ArrayList<>();
 
     public GankDataRecyclerAdapter(Context context){
@@ -47,23 +47,24 @@ public class GankDataRecyclerAdapter extends RecyclerView.Adapter<GankDataRecycl
 
     private void changeTextViewColor(TextView target,boolean isGreen){
         if(isGreen){
-            target.setTextColor(mContext.getResources().getColor(R.color.green_primary));
+            target.setTextColor(mContext.getResources().getColor(R.color.white));
             target.setTextSize(14);
+//            target.getPaint().setFlags(Paint.UNDERLINE_TEXT_FLAG); //下划线
+//            target.getPaint().setAntiAlias(true);//抗锯齿
 //            target.setTranslationX(80);
             Drawable drawable = mContext.getResources().getDrawable(R.drawable.voal);
             drawable.setBounds(0, 0, 15, 15);
-            Drawable drawable1 = mContext.getResources().getDrawable(R.drawable.abc_ab_share_pack_mtrl_alpha);
             target.setCompoundDrawables(drawable, null, null, null);
-            target.setCompoundDrawablePadding(80);
+            target.setCompoundDrawablePadding(20);
         }else{
-            target.setTextColor(mContext.getResources().getColor(R.color.white));
+            target.setTextColor(mContext.getResources().getColor(R.color.green_primary));
             target.setTextSize(20);
             target.setTranslationX(0);
             target.setCompoundDrawables(null, null, null, null);
         }
     }
 
-    public void setDatas(GankDayModel.ResultsBean resultsBean){
+    public void setDatas(GankDayBean.ResultsBean resultsBean){
         mResultsBean = resultsBean;
         //init Android datas
         if(resultsBean.getAndroid() != null){

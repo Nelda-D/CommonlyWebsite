@@ -5,13 +5,9 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.Window;
-import android.view.WindowManager;
 
 import com.nostra13.universalimageloader.cache.disc.naming.Md5FileNameGenerator;
 import com.nostra13.universalimageloader.cache.memory.impl.WeakMemoryCache;
@@ -22,6 +18,7 @@ import com.nostra13.universalimageloader.core.assist.ImageScaleType;
 import com.nostra13.universalimageloader.core.assist.QueueProcessingType;
 
 import nelda.com.commonlywebsite.Fragment.BaseFragment;
+import nelda.com.commonlywebsite.View.GankDayDatasActivity;
 
 /**
  * Created by Administrator on 2016/6/26 0026.
@@ -70,7 +67,7 @@ public class BaseActivity extends Activity {
             startActivity(intent);
             return true;
         }else if(id == R.id.action_gankpic){
-            Intent intent = new Intent(this,GankActivity.class);
+            Intent intent = new Intent(this,GankDayDatasActivity.class);
             startActivity(intent);
         }
 

@@ -1,10 +1,8 @@
 package nelda.com.commonlywebsite.Adapter;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +14,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import nelda.com.commonlywebsite.Bean.GankDayModel;
+import nelda.com.commonlywebsite.Bean.GankDayBean;
 import nelda.com.commonlywebsite.MainActivity;
 import nelda.com.commonlywebsite.R;
 
@@ -24,7 +22,7 @@ import nelda.com.commonlywebsite.R;
  * Created by Administrator on 2016/9/20.
  */
 public class GankDataAdapter extends BaseAdapter implements AdapterView.OnItemClickListener {
-    GankDayModel.ResultsBean mResultsBean;
+    GankDayBean.ResultsBean mResultsBean;
     List<LinkBean> list_LinkBeans = new ArrayList<>();
     Context mContext;
 
@@ -37,7 +35,7 @@ public class GankDataAdapter extends BaseAdapter implements AdapterView.OnItemCl
         return list_LinkBeans.size();
     }
 
-    public void setDatas(GankDayModel.ResultsBean resultsBean){
+    public void setDatas(GankDayBean.ResultsBean resultsBean){
         mResultsBean = resultsBean;
         //init Android datas
         if(resultsBean.getAndroid() != null){
