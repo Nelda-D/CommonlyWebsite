@@ -10,4 +10,5 @@ import nelda.com.commonlywebsite.Bean.GankDayBean;
 public interface IGankDateView {
     void showDatas(List<String> list_date);
     void showCover(String imageUrl);
+    void showTitle(String title);
 }

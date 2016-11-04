@@ -5,6 +5,7 @@ import java.util.List;
 
 import nelda.com.commonlywebsite.Bean.GankDateBean;
 import nelda.com.commonlywebsite.Bean.GankDayBean;
+import nelda.com.commonlywebsite.Bean.GankDayTitleBean;
 import nelda.com.commonlywebsite.Bean.GankPicResponse;
 import retrofit.Callback;
 import retrofit.RestAdapter;
@@ -75,6 +76,7 @@ public class GankModel implements IGankModel {
         }
     }
 
+
     private void getDayDatasByApi(String year, String month, String day, final OnDayDatasLoadedListener listenr) {
         //create resetApdater
         RestAdapter restAdapter = new RestAdapter.Builder()
@@ -123,6 +125,35 @@ public class GankModel implements IGankModel {
         });
     }
 
+    @Override
+    public void getDayTitle(String date,OnDayTitleLoadedListener onDayTitleLoadedListener) {
+        String[] dates = parseDateString(date);
+        getDayTitleByApi(dates[0], dates[1], dates[2], onDayTitleLoadedListener);
+    }
+
+    private void getDayTitleByApi(String year, String month, String day, final OnDayTitleLoadedListener listenr) {
+        //create resetApdater
+        RestAdapter restAdapter = new RestAdapter.Builder()
+                .setLogLevel(RestAdapter.LogLevel.FULL)
+                .setEndpoint(baseUrl).build();
+        //create GankDayApi
+        GankDayTitleApi gankDayTitleApi = restAdapter.create(GankDayTitleApi.class);
+        //getData by GankDayApi
+        gankDayTitleApi.getData(year, month, day, new Callback<GankDayTitleBean>() {
+            @Override
+            public void success(GankDayTitleBean gankDayTitleModel, Response response) {
+                GankDayTitleBean.ResultsBean bean = gankDayTitleModel.getResults().get(0);
+                String title = bean.getTitle();
+                if (listenr != null) listenr.onDayTitleLoadedListener(title);
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+            }
+        });
+    }
+
+
     public static String[] parseDateString(String date) {
         String[] dates = date.split("-");
         return dates;
@@ -139,7 +170,7 @@ public class GankModel implements IGankModel {
     }
 
     /**
-     * http://gank.io/api/history/content/day/2016/05/11
+     * http://gank.io/api/day/2015/08/06
      */
     public interface GankDayApi {
         @GET("/api/day/{year}/{month}/{day}")
@@ -153,5 +184,16 @@ public class GankModel implements IGankModel {
         @GET("/api/day/history")
         void getData(Callback<GankDateBean> gankPicModelCallback);
     }
+
+    /**
+     * http://gank.io/api/history/content/day/2016/11/04
+     *
+     */
+    public interface GankDayTitleApi {
+        @GET("/api/history/content/day/{year}/{month}/{day}")
+        void getData(@Path("year")String year,@Path("month") String month, @Path("day") String day,Callback<GankDayTitleBean> gankPicModelCallback);
+    }
+
+
 
 }

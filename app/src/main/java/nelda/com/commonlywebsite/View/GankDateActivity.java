@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -26,6 +27,7 @@ import nelda.com.commonlywebsite.R;
 public class GankDateActivity extends BaseActivity implements IGankDateView {
     ImageView mImg_Cover;
     List<String> mList_Date;
+    TextView mTv_Title;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +40,7 @@ public class GankDateActivity extends BaseActivity implements IGankDateView {
 
     private void initUI(){
         mImg_Cover = (ImageView)findViewById(R.id.gank_dayselect_cover);
+        mTv_Title = (TextView)findViewById(R.id.gank_dayselect_title);
         mImg_Cover.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -58,6 +61,11 @@ public class GankDateActivity extends BaseActivity implements IGankDateView {
     @Override
     public void showCover(String imageUrl) {
         ImageLoader.getInstance().displayImage(imageUrl,mImg_Cover);
+    }
+
+    @Override
+    public void showTitle(String title) {
+        mTv_Title.setText(title);
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
