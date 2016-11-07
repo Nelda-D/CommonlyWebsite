@@ -2,9 +2,10 @@ package nelda.com.commonlywebsite.Bean;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class GankDayBean {
+public class GankDayBean implements Serializable {
 
     /**
      * category : ["iOS","Android","拓展资源","��չ��Դ","福利","��Ϣ��Ƶ"]
@@ -40,7 +41,7 @@ public class GankDayBean {
         this.category = category;
     }
 
-    public static class ResultsBean {
+    public static class ResultsBean implements Serializable {
         /**
          * _id : 56cc6d23421aa95caa707a69
          * createdAt : 2015-08-06T07:15:52.65Z
@@ -167,7 +168,8 @@ public class GankDayBean {
             this.Welfare = Welfare;
         }
 
-        public static class AndroidBean {
+
+        public static class AndroidBean implements Serializable {
             private String _id;
             private String createdAt;
             private String desc;
@@ -242,7 +244,7 @@ public class GankDayBean {
             }
         }
 
-        public static class IOSBean {
+        public static class IOSBean implements Serializable {
             private String _id;
             private String createdAt;
             private String desc;
@@ -317,7 +319,7 @@ public class GankDayBean {
             }
         }
 
-        public static class RestMovieBean {
+        public static class RestMovieBean implements Serializable {
             private String _id;
             private String createdAt;
             private String desc;
@@ -392,7 +394,7 @@ public class GankDayBean {
             }
         }
 
-        public static class ExtendResourceBean {
+        public static class ExtendResourceBean implements Serializable {
             private String _id;
             private String createdAt;
             private String desc;
@@ -467,7 +469,7 @@ public class GankDayBean {
             }
         }
 
-        public static class RecommendBean {
+        public static class RecommendBean implements Serializable {
             private String _id;
             private String createdAt;
             private String desc;
@@ -542,7 +544,7 @@ public class GankDayBean {
             }
         }
 
-        public static class WelfareBean {
+        public static class WelfareBean implements Serializable {
             private String _id;
             private String createdAt;
             private String desc;

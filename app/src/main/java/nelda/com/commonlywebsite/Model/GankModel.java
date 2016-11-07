@@ -22,6 +22,7 @@ public class GankModel implements IGankModel {
     String baseUrl = "http://gank.io";
     List<String> mList_GankDates;
 
+
     @Override
     public void getDayDatas(String year, String mounth, String day, final OnDayDatasLoadedListener listenr) {
         getDayDatasByApi(year, mounth, day, listenr);
@@ -68,8 +69,8 @@ public class GankModel implements IGankModel {
             String[] dates = parseDateString(date);
             getDayDatasByApi(dates[0], dates[1], dates[2], new OnDayDatasLoadedListener() {
                 @Override
-                public void onDayDatasLoadedListener(GankDayBean.ResultsBean mResultsBean) {
-                    String url = mResultsBean.getWelfare().get(0).getUrl();
+                public void onDayDatasLoadedListener(GankDayBean.ResultsBean resultsBean) {
+                    String url = resultsBean.getWelfare().get(0).getUrl();
                     if(listener != null) listener.onRecentlyPicResultListener(url);
                 }
             });

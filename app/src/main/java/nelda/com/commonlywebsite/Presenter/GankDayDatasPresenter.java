@@ -21,6 +21,10 @@ public class GankDayDatasPresenter {
         mIGankModel = new GankModel();
     }
 
+    public void setDayDatas(GankDayBean.ResultsBean resultsBean){
+        mIGankDayDatasView.showDatas(resultsBean);
+    }
+
     public void loadDates(String year,String month,String day){
         getDayDatas(year, month, day);
     }
@@ -35,4 +39,9 @@ public class GankDayDatasPresenter {
         });
     }
 
+
+    public static String[] parseDateString(String date) {
+        String[] dates = date.split("-");
+        return dates;
+    }
 }

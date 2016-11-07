@@ -17,9 +17,12 @@ import java.util.List;
 import nelda.com.commonlywebsite.BaseActivity;
 import nelda.com.commonlywebsite.Bean.GankDayBean;
 import nelda.com.commonlywebsite.Model.GankModel;
+import nelda.com.commonlywebsite.Model.IGankModel;
 import nelda.com.commonlywebsite.Presenter.GankDatePresenter;
 import nelda.com.commonlywebsite.Presenter.GankDayDatasPresenter;
 import nelda.com.commonlywebsite.R;
+import rx.Observable;
+import rx.Subscriber;
 
 /**
  * Created by Administrator on 2016/10/31.
@@ -28,13 +31,14 @@ public class GankDateActivity extends BaseActivity implements IGankDateView {
     ImageView mImg_Cover;
     List<String> mList_Date;
     TextView mTv_Title;
+    GankDatePresenter mGankDatePresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_gank_dayselect);
         hideDecor();
-        GankDatePresenter presenter = new GankDatePresenter(this);
+        mGankDatePresenter = new GankDatePresenter(this,this);
         initUI();
     }
 
@@ -44,9 +48,7 @@ public class GankDateActivity extends BaseActivity implements IGankDateView {
         mImg_Cover.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(GankDateActivity.this,GankDayDatasActivity.class);
-                intent.putExtra(GankDayDatasPresenter.INTENT_DATA_GANK_DATE,mList_Date.get(0));
-                startActivity(intent);
+                mGankDatePresenter.onSelectedDay(mList_Date.get(0));
             }
         });
     }

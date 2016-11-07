@@ -18,6 +18,7 @@ import nelda.com.commonlywebsite.Adapter.GankDataRecyclerAdapter;
 import nelda.com.commonlywebsite.BaseActivity;
 import nelda.com.commonlywebsite.Bean.GankDayBean;
 import nelda.com.commonlywebsite.MainActivity;
+import nelda.com.commonlywebsite.Model.IGankModel;
 import nelda.com.commonlywebsite.Presenter.GankDayDatasPresenter;
 import nelda.com.commonlywebsite.R;
 
@@ -47,10 +48,13 @@ public class GankDayDatasActivity extends BaseActivity implements IGankDayDatasV
 //        getPicData(baseUrl);
 //        getDayDatas(baseUrl,2016,"09",18);
         Intent intent = getIntent();
-        String date = intent.getStringExtra(GankDayDatasPresenter.INTENT_DATA_GANK_DATE);
-        String[] dates = parseDateString(date);
+        String[] extraDatas = intent.getStringArrayExtra(IGankModel.KEY_GANK_DAY_DATAS);
+//        GankDayBean.ResultsBean resultsBean = (GankDayBean.ResultsBean) intent.getSerializableExtra(IGankModel.KEY_GANK_DAY_DATAS);
+        String[] dates = GankDayDatasPresenter.parseDateString(extraDatas[1]);
 
         GankDayDatasPresenter mGankPresenter = new GankDayDatasPresenter(this);
+//        mGankPresenter.setDayDatas(resultsBean);
+        showCover(extraDatas[0]);
         mGankPresenter.loadDates(dates[0],dates[1],dates[2]);
     }
 
@@ -88,10 +92,6 @@ public class GankDayDatasActivity extends BaseActivity implements IGankDayDatasV
         }
     }
 
-    private String[] parseDateString(String date) {
-        String[] dates = date.split("-");
-        return dates;
-    }
 
 
 //    private void getPicData(String url){
@@ -132,12 +132,15 @@ public class GankDayDatasActivity extends BaseActivity implements IGankDayDatasV
 
     @Override
     public void showDatas(GankDayBean.ResultsBean mResultsBean) {
-        ImageLoader.getInstance().displayImage(mResultsBean.getWelfare().get(0).getUrl(), mImg_Cover);
+
 //        mTV_Head_Title.setText(mResultsBean.getAndroid().get(0).getPublishedAt());
 //        mTV_Head_Title.append("-\nAndroid / iOS / ExtendResource/ Recommend ");
         mRecylerAdapter.setDatas(mResultsBean);
     }
 
+    public void showCover(String picUrl){
+        ImageLoader.getInstance().displayImage(picUrl, mImg_Cover);
+    }
 
 //    private void setView(ViewGroup rootView){
 //        imageView = new ImageView(this);
