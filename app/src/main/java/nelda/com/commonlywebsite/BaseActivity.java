@@ -25,7 +25,7 @@ import nelda.com.commonlywebsite.View.GankDayDatasActivity;
  */
 public class BaseActivity extends Activity {
 
-    private DisplayImageOptions options;
+    public DisplayImageOptions options;
 
     protected BaseFragment mCurrentFragment;
 
@@ -89,7 +89,7 @@ public class BaseActivity extends Activity {
                 .showImageForEmptyUri(0)//����ͼƬΪ�ջ��Ǵ���ʱ��ʾ��ͼƬ
                 .showImageOnFail(0)//����ͼƬ���ػ����Ĺ����з���������ʾ��ͼƬ
                 .cacheInMemory().cacheOnDisc()
-                .cacheInMemory(false) // default ��������IDEͼƬ�Ƿ񻺴����ڴ���
+                .cacheInMemory(true) // default ��������IDEͼƬ�Ƿ񻺴����ڴ���
                 .cacheOnDisk(false) //dafault �������ص�ͼƬ�Ƿ񻺴���SD����
                 .imageScaleType(ImageScaleType.IN_SAMPLE_INT) //default ����ͼƬ����εı��뷽ʽ��ʾ
                 .bitmapConfig(Bitmap.Config.ARGB_8888)//default ����ͼƬ�Ľ�������

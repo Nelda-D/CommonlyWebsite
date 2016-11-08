@@ -139,7 +139,7 @@ public class GankDayDatasActivity extends BaseActivity implements IGankDayDatasV
     }
 
     public void showCover(String picUrl){
-        ImageLoader.getInstance().displayImage(picUrl, mImg_Cover);
+        ImageLoader.getInstance().displayImage(picUrl, mImg_Cover,options);
     }
 
 //    private void setView(ViewGroup rootView){

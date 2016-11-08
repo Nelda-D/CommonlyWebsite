@@ -1,5 +1,7 @@
 package nelda.com.commonlywebsite.Presenter;
 
+import android.view.View;
+
 import java.util.List;
 
 import nelda.com.commonlywebsite.Bean.GankDateBean;
@@ -11,7 +13,7 @@ import nelda.com.commonlywebsite.Bean.GankDayBean;
 
 
 public interface IGankDatePresenter {
-    void onSelectedDay(String date);
+    void onSelectedDay(String date,View view);
 
 
 }

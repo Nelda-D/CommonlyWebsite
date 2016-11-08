@@ -48,7 +48,7 @@ public class GankDateActivity extends BaseActivity implements IGankDateView {
         mImg_Cover.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mGankDatePresenter.onSelectedDay(mList_Date.get(0));
+                mGankDatePresenter.onSelectedDay(mList_Date.get(0),mImg_Cover);
             }
         });
     }

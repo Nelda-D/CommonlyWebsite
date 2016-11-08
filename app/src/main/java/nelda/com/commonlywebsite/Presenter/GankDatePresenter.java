@@ -1,8 +1,9 @@
 package nelda.com.commonlywebsite.Presenter;
 
-import android.content.Context;
+import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Intent;
-import android.os.Bundle;
+import android.view.View;
 
 import java.util.List;
 
@@ -19,13 +20,13 @@ public class GankDatePresenter implements IGankDatePresenter {
     private IGankDateView mGankDateView;
     private IGankModel mGankModel;
     List<String> mList_date;
-    private Context mContext;
+    private Activity mActivity;
     private String mTodayPicUrl;
 
-    public GankDatePresenter(Context context, IGankDateView view){
+    public GankDatePresenter(Activity context, IGankDateView view){
         if(view instanceof  IGankDateView){
             mGankDateView = view;
-            mContext = context;
+            mActivity = context;
             loadDate();
         }
     }
@@ -65,13 +66,13 @@ public class GankDatePresenter implements IGankDatePresenter {
         }
     }
 
-    private void getDayDatas(String date){
+    private void getDayDatas(String date, final View sharedView){
         final String[] dates = GankDayDatasPresenter.parseDateString(date);
         mGankModel.getDayDatas(dates[0], dates[1], dates[2], new IGankModel.OnDayDatasLoadedListener() {
             @Override
             public void onDayDatasLoadedListener(GankDayBean.ResultsBean resultsBean) {
 //                mIGankDayDatasView.showDatas(mResultsBean);
-                startDayActivity(resultsBean);
+                startDayActivity(resultsBean,sharedView);
             }
         });
 //        Observable<String> observable = Observable.create(new Observable.OnSubscribe<String>() {
@@ -85,20 +86,22 @@ public class GankDatePresenter implements IGankDatePresenter {
     }
 
 
-    private void startDayActivity(GankDayBean.ResultsBean resultsBean){
-        Intent intent = new Intent(mContext,GankDayDatasActivity.class);
+    private void startDayActivity(GankDayBean.ResultsBean resultsBean,View sharedView){
+        Intent intent = new Intent(mActivity,GankDayDatasActivity.class);
         String[] extraDatas = new String[]{mTodayPicUrl,mList_date.get(0)};
 //        intent.putExtra(GankDayDatasPresenter.INTENT_DATA_GANK_DATE,mList_Date.get(0));
 //        Bundle bundle = new Bundle();
 //        bundle.putSerializable(IGankModel.KEY_GANK_DAY_DATAS,resultsBean);
 //        intent.putExtra(IGankModel.KEY_GANK_DAY_DATAS,bundle);
         intent.putExtra(IGankModel.KEY_GANK_DAY_DATAS,extraDatas);
-
-        mContext.startActivity(intent);
+//        mIntent.setClass(this, ShareElementsActivity.class);
+        ActivityOptions transitionActivityOptions = ActivityOptions.makeSceneTransitionAnimation(mActivity, sharedView, "SharedView");
+        mActivity.startActivity(intent, transitionActivityOptions.toBundle());
+//        mActivity.startActivity(intent);
     }
 
     @Override
-    public void onSelectedDay(String date) {
-        getDayDatas(date);
+    public void onSelectedDay(String date,View sharedView) {
+        getDayDatas(date,sharedView);
     }
 }
