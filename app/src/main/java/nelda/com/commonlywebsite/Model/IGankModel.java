@@ -16,6 +16,7 @@ public interface IGankModel {
     void getRecentlyPicUrl(OnRecentlyPicResultListener listener);
     void getDayTitle(String date,OnDayTitleLoadedListener onDayTitleLoadedListener);
 
+
     public interface OnDayDatasLoadedListener{
         void onDayDatasLoadedListener(GankDayBean.ResultsBean resultsBean);
     }

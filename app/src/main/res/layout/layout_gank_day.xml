@@ -121,5 +121,13 @@
 
     </android.support.design.widget.CoordinatorLayout>
 
+    <ImageView
+        android:id="@+id/gank_day_layout_shadow"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000"
+        android:alpha="0"
+        android:transitionName="SharedShadow"
+         />
 
 </RelativeLayout>

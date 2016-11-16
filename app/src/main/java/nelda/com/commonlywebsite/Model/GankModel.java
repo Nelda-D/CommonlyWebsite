@@ -1,5 +1,9 @@
 package nelda.com.commonlywebsite.Model;
 
+import android.graphics.Bitmap;
+
+import com.nostra13.universalimageloader.core.ImageLoader;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,7 +25,15 @@ public class GankModel implements IGankModel {
     GankDayBean.ResultsBean mResultsBean;
     String baseUrl = "http://gank.io";
     List<String> mList_GankDates;
+    static GankModel mGankModel;
+    Bitmap mRecentlyPicBitmap;
 
+    public static GankModel getInstance() {
+        if(mGankModel == null){
+            mGankModel = new GankModel();
+        }
+        return mGankModel;
+    }
 
     @Override
     public void getDayDatas(String year, String mounth, String day, final OnDayDatasLoadedListener listenr) {
@@ -152,6 +164,13 @@ public class GankModel implements IGankModel {
             public void failure(RetrofitError error) {
             }
         });
+    }
+
+    public Bitmap getRecentlyPicBitmap(){
+        return mRecentlyPicBitmap;
+    }
+    public void setRecentlyPicBitmap(Bitmap bitmap){
+        mRecentlyPicBitmap = bitmap;
     }
 
 

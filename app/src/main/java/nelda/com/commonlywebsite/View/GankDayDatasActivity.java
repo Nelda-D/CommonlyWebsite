@@ -1,16 +1,26 @@
 package nelda.com.commonlywebsite.View;
 
+import android.animation.Animator;
+import android.animation.ObjectAnimator;
 import android.annotation.TargetApi;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.transition.ArcMotion;
+import android.transition.Fade;
+import android.transition.Slide;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.animation.AnimationUtils;
+import android.view.animation.Interpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.nostra13.universalimageloader.core.ImageLoader;
 
@@ -18,9 +28,11 @@ import nelda.com.commonlywebsite.Adapter.GankDataRecyclerAdapter;
 import nelda.com.commonlywebsite.BaseActivity;
 import nelda.com.commonlywebsite.Bean.GankDayBean;
 import nelda.com.commonlywebsite.MainActivity;
+import nelda.com.commonlywebsite.Model.GankModel;
 import nelda.com.commonlywebsite.Model.IGankModel;
 import nelda.com.commonlywebsite.Presenter.GankDayDatasPresenter;
 import nelda.com.commonlywebsite.R;
+import nelda.com.commonlywebsite.Tool.TransitionChangeBounds;
 
 
 /**
@@ -34,6 +46,7 @@ public class GankDayDatasActivity extends BaseActivity implements IGankDayDatasV
     ImageView mImg_Cover;
     TextView mTV_Head_Title;
     RecyclerView mListView_Gank;
+    ImageView mImg_Shadow;
 
 //    GankDataAdapter mAdapter;
     GankDataRecyclerAdapter mRecylerAdapter;
@@ -44,6 +57,8 @@ public class GankDayDatasActivity extends BaseActivity implements IGankDayDatasV
         setContentView(R.layout.layout_gank_day);
         hideDecor();
         initUI();
+//        Toast.makeText(this, "Day Datas", Toast.LENGTH_SHORT).show();
+        System.out.println("GankDayDatasActivity  onCreate()");
 //        setView(container);
 //        getPicData(baseUrl);
 //        getDayDatas(baseUrl,2016,"09",18);
@@ -54,12 +69,27 @@ public class GankDayDatasActivity extends BaseActivity implements IGankDayDatasV
 
         GankDayDatasPresenter mGankPresenter = new GankDayDatasPresenter(this);
 //        mGankPresenter.setDayDatas(resultsBean);
-        showCover(extraDatas[0]);
+        showCover(GankModel.getInstance().getRecentlyPicBitmap(),extraDatas[0]);
         mGankPresenter.loadDates(dates[0],dates[1],dates[2]);
+//        shadowAnimator(mImg_Shadow,false);
+        setSharedElementTransition();
+        getWindow().setEnterTransition(new Slide());
+        getWindow().setExitTransition(new Slide());
+
+    }
+
+    private void shadowAnimator(View view,boolean isShow){
+//        if(true)return;
+        if(isShow){
+            ObjectAnimator.ofFloat(view, "alpha", 0f, 0.5F).setDuration(300).start();
+        }else{
+            ObjectAnimator.ofFloat(view, "alpha", 0.5F, 0F).setDuration(300).start();
+        }
     }
 
     private void initUI(){
 //        ViewGroup container = (SlidingLayout) findViewById(R.id.container_gank);
+        mImg_Shadow = (ImageView)findViewById(R.id.gank_day_layout_shadow);
         mImg_Cover = (ImageView)findViewById(R.id.gank_banner_cover);
         mTV_Head_Title = (TextView) findViewById(R.id.gank_head_title);
         mListView_Gank = (RecyclerView)findViewById(R.id.gank_listview);
@@ -90,6 +120,33 @@ public class GankDayDatasActivity extends BaseActivity implements IGankDayDatasV
 
 
         }
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    private void setSharedElementTransition(){
+        ArcMotion arcMotion = new ArcMotion();
+        arcMotion.setMinimumHorizontalAngle(50f);
+        arcMotion.setMinimumVerticalAngle(50f);
+
+        Interpolator easeInOut = AnimationUtils.loadInterpolator(this, android.R.interpolator.fast_out_slow_in);
+
+        TransitionChangeBounds enterTransition = new TransitionChangeBounds();
+        Animator enterColor = ObjectAnimator.ofFloat(mImg_Shadow, "alpha", 0.5f, 0F);
+        enterTransition.addAnimatorPlayTogether(enterColor);
+        enterTransition.addTarget(mImg_Shadow);
+        enterTransition.setInterpolator(easeInOut);
+
+        TransitionChangeBounds exitTransition = new TransitionChangeBounds();
+        Animator exitColor = ObjectAnimator.ofFloat(mImg_Shadow, "alpha", 0f, 0.5F);
+        exitTransition.addAnimatorPlayTogether(exitColor);
+        exitTransition.addTarget(mImg_Shadow);
+        exitTransition.setInterpolator(easeInOut);
+        exitTransition.setPathMotion(arcMotion);
+
+//        getWindow().setSharedElementEnterTransition(enterTransition);
+//        getWindow().setSharedElementReturnTransition(exitTransition);
+//        getWindow().setSharedElementExitTransition(exitTransition);
+
     }
 
 
@@ -138,8 +195,12 @@ public class GankDayDatasActivity extends BaseActivity implements IGankDayDatasV
         mRecylerAdapter.setDatas(mResultsBean);
     }
 
-    public void showCover(String picUrl){
-        ImageLoader.getInstance().displayImage(picUrl, mImg_Cover,options);
+    public void showCover(Bitmap picBitmap, String picUrl){
+        if(picBitmap != null){
+            mImg_Cover.setImageBitmap(picBitmap);
+        }else{
+            ImageLoader.getInstance().displayImage(picUrl, mImg_Cover,options);
+        }
     }
 
 //    private void setView(ViewGroup rootView){
@@ -151,6 +212,9 @@ public class GankDayDatasActivity extends BaseActivity implements IGankDayDatasV
 //    }
 
 
-
-
+    @Override
+    protected void onStop() {
+        super.onStop();
+        shadowAnimator(mImg_Shadow,true);
+    }
 }

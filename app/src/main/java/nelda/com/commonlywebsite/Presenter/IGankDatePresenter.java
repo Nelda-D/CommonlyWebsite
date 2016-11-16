@@ -13,7 +13,7 @@ import nelda.com.commonlywebsite.Bean.GankDayBean;
 
 
 public interface IGankDatePresenter {
-    void onSelectedDay(String date,View view);
+    void onSelectedDay(String date);
 
 
 }

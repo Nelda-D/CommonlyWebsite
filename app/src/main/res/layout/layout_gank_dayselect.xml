@@ -16,19 +16,24 @@
             android:scaleType="centerCrop" />
 
         <ImageView
+            android:id="@+id/gank_dayselect_layout_shadow"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#72000000"
-            android:fitsSystemWindows="true" />
+            android:transitionName="SharedShadow"
+            android:alpha="0.5"
+            android:background="#000000"
+             />
 
     </FrameLayout>
 
     <FrameLayout
+        android:id="@+id/gank_dayselect_title_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="80dp"
-        android:background="#b0000000">
+        android:visibility="invisible"
+        android:background="@color/shadow_background_alpha_50">
 
         <TextView
             android:id="@+id/gank_dayselect_title"

@@ -8,4 +8,11 @@
 
     <color name="green_primary">#ff00bcd4</color>
     <color name="green_primary_dark">#ff00bcd4</color>
+    <!--<color name="green_primary_dark">#ff00bcd4</color>-->
+
+    <color name="green_dark">#ff00bcd4</color>
+
+
+    <color name="shadow_background_alpha_0">#00000000</color>
+    <color name="shadow_background_alpha_50">#b0000000</color>
 </resources>

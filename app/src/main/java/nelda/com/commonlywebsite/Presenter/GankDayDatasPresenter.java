@@ -18,7 +18,7 @@ public class GankDayDatasPresenter {
         if(view instanceof IGankDayDatasView){
             mIGankDayDatasView = view;
         }
-        mIGankModel = new GankModel();
+        mIGankModel = GankModel.getInstance();
     }
 
     public void setDayDatas(GankDayBean.ResultsBean resultsBean){
